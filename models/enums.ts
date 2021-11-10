@@ -4,4 +4,10 @@ enum Enum_Rol {
   administrador = 'Administrador',
 }
 
-export { Enum_Rol };
+enum Enum_Estado_Usuario {
+  pendiente ="Pendiente",
+  autorizado = "Autorizado",
+  no_autorizado = "No Autorizado",
+}
+
+export { Enum_Rol, Enum_Estado_Usuario };

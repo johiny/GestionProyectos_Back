@@ -1,6 +1,6 @@
 import conectarBD from './db/db';
 import { UserModel } from './models/user';
-import { Enum_Rol } from './models/enums';
+import { Enum_Estado_Usuario, Enum_Rol } from './models/enums';
 
 const main = async () => {
   await conectarBD();
@@ -12,6 +12,9 @@ const main = async () => {
     identificacion: '123234',
     nombre: 'daniel',
     rol: Enum_Rol.administrador,
+    avances: ["creacion de espacio de traabajo para experimentos","se descubrio una extraña bacteria"],
+    inscripciones: ["laura fuentes 2/05/2021","carlos castillo 31/10/2020"],
+    proyectos: ["agua pura", "descontaminacion del rio aguas claras"]
   })
     .then((u) => {
       console.log('usuario creado', u);
