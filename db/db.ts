@@ -1,9 +1,11 @@
 import { connect } from 'mongoose';
-// const { connect } = require('mongoose');
+import * as dotenv from "dotenv";
+
+dotenv.config({path:"./.env"})
 
 const conectarBD = async () => {
   return await connect(
-    'mongodb+srv://admin:AdminProyectos@gestionproyectosmisiont.1zmu5.mongodb.net/GestionProyectos?retryWrites=true&w=majority'
+    process.env.STRING_CONNECTION
   )
     .then(() => {
       console.log('Conexion exitosa');
