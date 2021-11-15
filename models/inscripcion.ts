@@ -15,7 +15,7 @@ const inscriptionSchema = new Schema<Inscription>({
   estado: {
     type: String,
     enum: Enum_EstadoInscripcion,
-    required: true,
+    required: false,
   },
   fechaIngreso: {
     type: Date,
