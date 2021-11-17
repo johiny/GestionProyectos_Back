@@ -7,9 +7,9 @@ const main = async () => {
 
   // CREAR UN USUARIO
   await UserModel.create({
-    apellido: 'castillo',
-    correo: 'johan@cc.com',
-    identificacion: '4360340',
+    apellido: 'MAZZO',
+    correo: 'johan@co.com',
+    identificacion: '433465440',
     nombre: 'johan',
     rol: Enum_Rol.administrador,
     avances: ["creacion de espacio de traabajo para experimentos","se descubrio una extraña bacteria"],
