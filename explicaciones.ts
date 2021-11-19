@@ -1,11 +1,11 @@
 import conectarBD from './db/db';
-import { UserModel } from './models/user';
-import { Enum_Rol,Enum_EstadoUsuario, Enum_TipoObjetivo, Enum_EstadoInscripcion, Enum_FaseProyecto, Enum_EstadoAprobado} from './models/enums';
-import { ProjectModel } from './models/project';
+import { UserModel } from './models/user/user';
+import { Enum_Rol,Enum_EstadoUsuario, Enum_TipoObjetivo, Enum_EstadoInscripcion, Enum_FaseProyecto, Enum_EstadoAprobado} from './models/enums/enums';
+import { ProjectModel } from './models/project/project';
 import { ObjectId } from 'mongoose';
 import { ObjectiveModel } from './models/objective';
-import{InscriptionModel} from './models/inscripcion';
-import { AdvancementModel } from './models/avances';
+import{InscriptionModel} from './models/inscripcion/inscripcion';
+import { AdvancementModel } from './models/avance/avances';
 
 const main = async()=>{
   await conectarBD();
@@ -17,8 +17,8 @@ const main = async()=>{
     apellido: 'Delgado',
     correo: 'delgado.h.a@gmail.com',
     identificacion: '123435',
-    rol: Enum_Rol.lider,
-    estado:Enum_EstadoUsuario.pendiente,
+    rol: Enum_Rol.LIDER,
+    estado:Enum_EstadoUsuario.PENDIENTE,
     
     });
 
@@ -27,8 +27,8 @@ const main = async()=>{
       apellido: 'Castillo',
       correo: 'johinymazzo@gmail.com',
       identificacion: '223439',
-      rol: Enum_Rol.administrador,
-      estado:Enum_EstadoUsuario.autorizado,
+      rol: Enum_Rol.ADMINISTRADOR,
+      estado:Enum_EstadoUsuario.AUTORIZADO,
       
       });
 
@@ -37,8 +37,8 @@ const main = async()=>{
         apellido: 'Ortiz',
         correo: 'camiloorvi@gmail.com',
         identificacion: '2343230',
-        rol: Enum_Rol.lider,
-        estado:Enum_EstadoUsuario.pendiente,
+        rol: Enum_Rol.LIDER,
+        estado:Enum_EstadoUsuario.PENDIENTE,
         
         });
 
@@ -47,8 +47,8 @@ const main = async()=>{
           apellido: 'Perez',
           correo: 'jfl28488@gmail.com',
           identificacion: '123422',
-          rol: Enum_Rol.estudiante,
-          estado:Enum_EstadoUsuario.pendiente,
+          rol: Enum_Rol.ESTUDIANTE,
+          estado:Enum_EstadoUsuario.PENDIENTE,
           
           });
 
@@ -57,8 +57,8 @@ const main = async()=>{
             apellido: 'Trujillo',
             correo: 'dtrujillo1003@gmail.com',
             identificacion: '876598',
-            rol: Enum_Rol.estudiante,
-            estado:Enum_EstadoUsuario.pendiente,
+            rol: Enum_Rol.ESTUDIANTE,
+            estado:Enum_EstadoUsuario.PENDIENTE,
             
             });
 
@@ -75,18 +75,18 @@ const main = async()=>{
     
     const objetvoGeneral = await ObjectiveModel.create({
       descripcion:'Detectar mastitis clinica en los primeros 100 dias post parto using MLT',
-      tipo:Enum_TipoObjetivo.general,
+      tipo:Enum_TipoObjetivo.GENERAL,
       proyecto: proyectoMastitis._id,
     });
     
     const objetvoEspecifico1 = await ObjectiveModel.create({
       descripcion:'Seleccionar hatos con documentacion completa',
-      tipo:Enum_TipoObjetivo.especifico,
+      tipo:Enum_TipoObjetivo.ESPECIFICO,
       proyecto: proyectoMastitis._id,
     });
     const objetvoEspecifico2 = await ObjectiveModel.create({
       descripcion:'Determinar cual algoritmo tienen la mejor especificidad y sensibilidad',
-      tipo:Enum_TipoObjetivo.especifico,
+      tipo:Enum_TipoObjetivo.ESPECIFICO,
       proyecto: proyectoMastitis._id,
     });
 
@@ -102,30 +102,30 @@ const main = async()=>{
       
       const objetvoGeneral2 = await ObjectiveModel.create({
         descripcion:'Educar a los tenedores de mascotas en la zona norte de Bogota en tenencia responsable',
-        tipo:Enum_TipoObjetivo.general,
+        tipo:Enum_TipoObjetivo.GENERAL,
         proyecto: proyectoMascotas._id,
       });
       
       const objetvoEspecifico12 = await ObjectiveModel.create({
         descripcion:'Capacitar lideres comunitarios de 20 barrios en TRM',
-        tipo:Enum_TipoObjetivo.especifico,
+        tipo:Enum_TipoObjetivo.ESPECIFICO,
         proyecto: proyectoMascotas._id,
       });
       const objetvoEspecifico22 = await ObjectiveModel.create({
         descripcion:'Esterilizar el 70% de la poblacion canina y felina de la zona para evitar sobrepoblacion',
-        tipo:Enum_TipoObjetivo.especifico,
+        tipo:Enum_TipoObjetivo.ESPECIFICO,
         proyecto: proyectoMascotas._id,
       });
   
       const objetvoEspecifico32 = await ObjectiveModel.create({
         descripcion:'Implementar el esquema de vacunacion en el 90% de la poblacion',
-        tipo:Enum_TipoObjetivo.especifico,
+        tipo:Enum_TipoObjetivo.ESPECIFICO,
         proyecto: proyectoMascotas._id,
       });
 
 
       const inscripcion1 = await InscriptionModel.create({
-        estado:Enum_EstadoInscripcion.nula,
+        estado:Enum_EstadoInscripcion.PENDIENTE,
         fechaIngreso: new Date ('2021/12/15'),
         fechaEgreso: new Date ('2022/06/04'),
         proyecto: proyectoMascotas._id,
@@ -134,7 +134,7 @@ const main = async()=>{
 
 
       const inscripcion2 = await InscriptionModel.create({
-        estado: Enum_EstadoInscripcion.nula,
+        estado: Enum_EstadoInscripcion.PENDIENTE,
         fechaIngreso: new Date ('2021/12/15'),
         fechaEgreso: new Date ('2022/03/15'),
         proyecto: proyectoMastitis._id,
@@ -145,7 +145,7 @@ const main = async()=>{
         fecha: new Date ('2021/12/15'),
         descripcion: 'El proyecto de mastitis esta comenzando bien',
         observaciones: 'se necesita dinero pero ahi vamos',
-        fase:Enum_FaseProyecto.iniciado,
+        fase:Enum_FaseProyecto.INICIADO,
         proyecto:proyectoMastitis._id,
         creadoPor: estudiante1._id,
 
@@ -156,7 +156,7 @@ const main = async()=>{
         fecha: new Date ('2021/12/15'),
         descripcion: 'las fincas han sido seleccionadas',
         observaciones: 'se necesita dinero pero ahi vamos',
-        fase:Enum_FaseProyecto.iniciado,
+        fase:Enum_FaseProyecto.INICIADO,
         proyecto:proyectoMastitis._id,
         creadoPor: estudiante1._id,
 
@@ -166,7 +166,7 @@ const main = async()=>{
         fecha: new Date ('2021/12/15'),
         descripcion: 'La base de datos ha sido construida',
         observaciones: 'se necesita dinero pero ahi vamos',
-        fase:Enum_FaseProyecto.iniciado,
+        fase:Enum_FaseProyecto.INICIADO,
         proyecto:proyectoMastitis._id,
         creadoPor: estudiante1._id,
 
@@ -176,7 +176,7 @@ const main = async()=>{
         fecha: new Date ('2021/12/23'),
         descripcion: 'El proyecto de identificacion de mascotas comenzo',
         observaciones: 'hay fondos pero hay problemas con el estudiante por tiempo asignado',
-        fase:Enum_FaseProyecto.iniciado,
+        fase:Enum_FaseProyecto.INICIADO,
         proyecto:proyectoMascotas._id,
         creadoPor: estudiante2._id,
 

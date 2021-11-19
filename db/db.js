@@ -1,11 +1,9 @@
-import { connect } from 'mongoose';
+import mongoose from 'mongoose';
 // const { connect } = require('mongoose');
 
 const conectarBD = async () => {
-  return await connect(
-    'mongodb+srv://HectorDB:H3ct0r_DB@gsussurvivors.5aqj3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-   
-  )
+  return await mongoose
+  .connect(process.env.DATABASE_URL)
     .then(() => {
       console.log('Conexion exitosa');
     })
