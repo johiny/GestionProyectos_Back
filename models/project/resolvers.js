@@ -21,6 +21,19 @@ const resolversProyecto = {
       });
       return proyectoCreado;
     },
+
+    editarProyecto: async (parent, args) => {
+      const proyectoEditado = await ProjectModel.findByIdAndUpdate(args._id, {
+        nombre: args.nombre,
+        aprobado:args.aprobado,
+        estado: args.estado,
+        fase: args.fase,
+        presupuesto: args.presupuesto,
+        
+      },
+      {new:true});
+      return proyectoEditado
+    }
   },
 };
 
