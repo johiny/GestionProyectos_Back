@@ -66,11 +66,11 @@ const userSchema = new Schema({
 
 //ESTO ES PARA PODER HACER LAS POPULACIONES ONE TO MANY UN PROYECTO MULTIPLES AVANCES  O UN PROYECTO MUCHAS INSCRIPCIONES PARA ESO SE USA EL VIRTUAL
 //ojo no funciona
- userSchema.virtual('estudiantes', {
-   ref: 'Usuario',
-   localField: '_id',
-   foreignField: 'rol',
- });
+//  userSchema.virtual('estudiantes', {
+//    ref: 'Usuario',
+//    localField: '_id',
+//    foreignField: 'rol',
+//  });
 
 userSchema.virtual('proyectos',{
   ref: 'Proyecto',
@@ -84,7 +84,11 @@ userSchema.virtual('avances',{
   foreignField:'creadoPor',
 });
 
-
+userSchema.virtual('usuarios',{
+  ref: 'Usuario',
+  localField: '_id',
+  foreignField:'_id',
+});
 
 const UserModel = model('User', userSchema);
 

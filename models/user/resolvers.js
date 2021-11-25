@@ -17,7 +17,7 @@ const resolversUsuario = {
     },
 
     Estudiante: async (parent, args) => {
-      const estudiante = await UserModel.find({rol:args.rol}).populate({path:'estudiantes'})
+      const estudiante = await UserModel.findOne ({rol: args.rol});
       return estudiante;
     },
 

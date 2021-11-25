@@ -28,17 +28,18 @@ const resolversAvance = {
       return avanceCreado;
     },
 
-    editarDescripcion: async (parent, args) => {
-      const descripcionEditada = await AdvancementModel.findByIdAndUpdate(args._id, {
+    
+    editarAvance: async (parent, args) => {
+      const avanceEditado = await AdvancementModel.findByIdAndUpdate(args._id, {
         fecha: args.fecha,
         descripcion: args.descripcion,
-        
+        proyecto: args.proyecto,
+        creadoPor: args.creadoPor,
       },
       {new:true});
 
-      return descripcionEditada;
+      return avanceEditado;
     },
-
 
   },
 };

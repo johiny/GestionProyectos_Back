@@ -6,12 +6,14 @@ const resolversProyecto = {
       const proyectos = await ProjectModel.find().populate({path:'avances'}).populate({path:'inscripciones'});
       return proyectos;
     },
-  },
+
+    Proyecto: async (parent, args) => {
+      const proyecto = await ProjectModel.findOne({ _id: args._id }).populate({path:'avances'});
+      return proyecto;
+    },
+  }, 
   
-  //  ProyectoIns: async (parent, args) => {
-  //    const proyecto = await ProjectModel.find(args);
-  //    return proyecto;
-  //  },
+   
 
 
   

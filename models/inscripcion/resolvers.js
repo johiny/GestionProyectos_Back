@@ -6,6 +6,20 @@ const resolverInscripciones = {
       const inscripciones = await InscriptionModel.find();
       return inscripciones;
     },
+
+    InscripcionProyecto: async (parent, args) => {
+      const inscripcionProyecto = await InscriptionModel.find({proyecto: args.idProyecto});
+      return inscripcionProyecto;
+    },
+
+    // filtrarAvance: async (parents, args) => {
+    //   const avanceFiltrado = await AdvancementModel.find({ proyecto: args.idProyecto })
+    //     .populate({path:'proyecto'})
+    //     .populate({path:'creadoPor'});
+    //   return avanceFiltrado;
+    // },
+
+
   },
   Mutation: {
     crearInscripcion: async (parent, args) => {
