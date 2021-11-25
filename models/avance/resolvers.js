@@ -3,15 +3,18 @@ import { AdvancementModel } from './avances.js';
 const resolversAvance = {
   Query: {
     Avances: async (parent, args) => {
-      const avances = await AdvancementModel.find().populate('proyecto').populate('creadoPor');
+      const avances = await AdvancementModel.find().populate({path:'proyecto'}).populate({path:'creadoPor'});
       return avances;
     },
     filtrarAvance: async (parents, args) => {
       const avanceFiltrado = await AdvancementModel.find({ proyecto: args.idProyecto })
-        .populate('proyecto')
-        .populate('creadoPor');
+        .populate({path:'proyecto'})
+        .populate({path:'creadoPor'});
       return avanceFiltrado;
     },
+
+    
+
   },
   Mutation: {
     crearAvance: async (parents, args) => {
@@ -24,6 +27,19 @@ const resolversAvance = {
       });
       return avanceCreado;
     },
+
+    editarDescripcion: async (parent, args) => {
+      const descripcionEditada = await AdvancementModel.findByIdAndUpdate(args._id, {
+        fecha: args.fecha,
+        descripcion: args.descripcion,
+        
+      },
+      {new:true});
+
+      return descripcionEditada;
+    },
+
+
   },
 };
 
