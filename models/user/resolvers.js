@@ -17,7 +17,7 @@ const resolversUsuario = {
     },
 
     Estudiante: async (parent, args) => {
-      const estudiante = await UserModel.findOne ({rol: args.rol});
+      const estudiante = await UserModel.findOne ({rol: 'ESTUDIANTE'});
       return estudiante;
     },
 

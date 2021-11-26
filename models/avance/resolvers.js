@@ -21,6 +21,7 @@ const resolversAvance = {
       const avanceCreado = AdvancementModel.create({
         fecha: args.fecha,
         descripcion: args.descripcion,
+        observaciones:args.observaciones,
         proyecto: args.proyecto,
         creadoPor: args.creadoPor,
       
@@ -33,6 +34,7 @@ const resolversAvance = {
       const avanceEditado = await AdvancementModel.findByIdAndUpdate(args._id, {
         fecha: args.fecha,
         descripcion: args.descripcion,
+        observaciones:args.observaciones,
         proyecto: args.proyecto,
         creadoPor: args.creadoPor,
       },

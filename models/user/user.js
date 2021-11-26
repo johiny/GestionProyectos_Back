@@ -84,11 +84,6 @@ userSchema.virtual('avances',{
   foreignField:'creadoPor',
 });
 
-userSchema.virtual('usuarios',{
-  ref: 'Usuario',
-  localField: '_id',
-  foreignField:'_id',
-});
 
 const UserModel = model('User', userSchema);
 
