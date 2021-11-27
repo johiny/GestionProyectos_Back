@@ -21,11 +21,12 @@ const advancementSchema = new Schema({
     type: String,
     required: true,
   },
-  observaciones: [
+  observaciones: 
     {
       type: String,
+      required:false,
     },
-  ],
+  
 
   fase: {
     type: String,
