@@ -78,6 +78,7 @@ userSchema.virtual('proyectosLiderados', {
   foreignField: 'lider',
 });
 
+
 userSchema.virtual('avancesCreados', {
   ref: 'Avance',
   localField: '_id',
@@ -89,6 +90,15 @@ userSchema.virtual('inscripciones', {
   localField: '_id',
   foreignField: 'estudiante',
 });
+
+userSchema.virtual('proyectos',{
+  ref: 'Proyecto',
+  localField: '_id',
+  foreignField:'lider',
+});
+
+
+
 
 const UserModel = model('User', userSchema);
 
