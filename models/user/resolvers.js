@@ -3,18 +3,39 @@ import { UserModel } from './user.js';
 const resolversUsuario = {
   Query: {
     Usuarios: async (parent, args) => {
-      const usuarios = await UserModel.find();
+      const usuarios = await UserModel.find().populate([
+        {
+          path: 'inscripciones',
+          populate: {
+            path: 'proyecto',
+            populate: [{ path: 'lider' }, { path: 'avances' }],
+          },
+        },
+        {
+          path: 'proyectosLiderados',
+        },
+      ]);
       return usuarios;
     },
+
+
     Usuario: async (parent, args) => {
-      const usuario = await UserModel.findOne({ _id: args._id }).populate({path:'proyectos'});
+      const usuario = await UserModel.findOne({ _id: args._id }).populate([
+        {
+          path: 'inscripciones',
+          populate: {
+            path: 'proyecto',
+            populate: [{ path: 'lider' }, { path: 'avances' }],
+          },
+        },
+        {
+          path: 'proyectosLiderados',
+        },
+      ]);
       return usuario;
     },
     
-    Usuario2: async (parent, args) => {
-      const usuario2 = await UserModel.findOne({ _id: args._id }).populate({path:'avances'});
-      return usuario2;
-    },
+    
 
     Estudiante: async (parent, args) => {
       const estudiante = await UserModel.findOne ({rol: 'ESTUDIANTE'});
