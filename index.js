@@ -31,7 +31,7 @@ const server = new ApolloServer({
         if(token){
             const userData = getUserData(token);
             if(userData){
-                
+                console.log("contexto actual",userData)
                 return {userData}; 
             }
         }

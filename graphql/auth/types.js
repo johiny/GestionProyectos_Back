@@ -23,9 +23,7 @@ type Mutation{
         password: String!
     ): Token
 
-    refreshToken(
-        token: String!
-    ): Token 
+    refreshToken: Token
 }`;
 
 export {tiposAutenticacion};

@@ -44,10 +44,33 @@ const resolversAutenticacion = {
                  })
             };
             }
+            else{
+                return {
+                    error: "Usuario o contraseña incorrecta"
+                }
+            }
         },
 
         refreshToken: async (parent,args,context) => {
             console.log("este es el contexto compartido por apollo entre el front y el back: ",context)
+            if(context.userData)
+            {
+                console.log("Token validado porque hay data en el context")
+                return {token: generateToken({
+                    _id: context.userData._id,
+                    nombre: context.userData.nombre,
+                    apellido: context.userData.apellido,
+                    identificacion: context.userData.identificacion,
+                    correo: context.userData.correo,
+                    rol: context.userData.rol
+                 })
+                }
+            }  
+            else
+            {
+            return {error: "token no valido"}
+            }
+
         }
     }
 }
