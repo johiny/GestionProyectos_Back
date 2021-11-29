@@ -30,8 +30,26 @@ const resolversAutenticacion = {
             };
         },
 
-        
-    },
-};
+        login: async (parent,args) => {
+            const UsuarioEncontrado = await UserModel.findOne({correo: args.correo})
+            if (await bcrypt.compare(args.password,UsuarioEncontrado.password))
+            {
+                return {token: generateToken({
+                    _id: UsuarioEncontrado._id,
+                    nombre: UsuarioEncontrado.nombre,
+                    apellido: UsuarioEncontrado.apellido,
+                    identificacion: UsuarioEncontrado.identificacion,
+                    correo: UsuarioEncontrado.correo,
+                    rol: UsuarioEncontrado.rol
+                 })
+            };
+            }
+        },
+
+        refreshToken: async (parent,args,context) => {
+            console.log("este es el contexto compartido por apollo entre el front y el back: ",context)
+        }
+    }
+}
 
 export {resolversAutenticacion}
