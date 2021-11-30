@@ -11,7 +11,6 @@ dotenv.config();
 
 const getUserData = (token) =>{
 
-    token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWEzZmFkMTRkMDAxODFkYTA0YWQwYmMiLCJub21icmUiOiJNQU5PTE8iLCJhcGVsbGlkbyI6IlNhbmNoZXoiLCJpZGVudGlmaWNhY2lvbiI6Ijk0ODQ5NTczOTg3IiwiY29ycmVvIjoicGVwaXRvcGVyZXpAZ21haWwuY29tIiwicm9sIjoiRVNUVURJQU5URSIsImlhdCI6MTYzODE1NDc1OCwiZXhwIjoxNjM4MzI3NTU4fQ.2G559sEhug3R_Vs-kqObTO0n-j5p0EjEDuOGbSEA-FY"
     const verification = validateToken(token.split(" ")[1])
     if(verification.data)
     {
