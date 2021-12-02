@@ -16,9 +16,6 @@ type Mutation{
         rol: Enum_Rol!
         estado: Enum_EstadoUsuario
         password:String!
-        inscripciones: [Inscripcion]
-        avancesCreados: [Avance]
-        proyectosLiderados: [Proyecto]
     ): Token!
 
     login(
