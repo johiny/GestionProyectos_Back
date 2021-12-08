@@ -20,7 +20,7 @@ const tiposUsuario = gql`
     Usuarios: [Usuario]
     Usuario(_id: String!): Usuario
     UsuarioEst(_id:String!):Usuario
-    Estudiante(rol:Enum_Rol):Usuario
+    Estudiantes(rol:Enum_Rol):[Usuario]
   }
 
   type Mutation {
