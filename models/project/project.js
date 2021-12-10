@@ -89,7 +89,6 @@ projectSchema.virtual('inscripciones', {
 });
 
 
-
 const ProjectModel = model('Proyecto', projectSchema);
 
 export { ProjectModel };

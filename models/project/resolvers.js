@@ -8,12 +8,18 @@ const resolversProyecto = {
     },
 
     Proyecto: async (parent, args) => {
-      const proyecto = await ProjectModel.findOne({ _id: args._id }).populate({path:'avances'}).populate({path:'inscripciones'});
+      const proyecto = await ProjectModel.findOne({ _id: args._id }).populate([{path:'avances',populate:{path:'creadoPor'},
+    },
+    {path:'inscripciones'},],);
        
       return proyecto;
     },
   }, 
   
+
+
+
+
   // populate([
   //   {
   //     path: 'inscripciones',
