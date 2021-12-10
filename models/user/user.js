@@ -97,12 +97,6 @@ userSchema.virtual('inscripciones', {
   foreignField: 'estudiante',
 });
 
-userSchema.virtual('proyectos',{
-  ref: 'Proyecto',
-  localField: '_id',
-  foreignField:'lider',
-});
-
 
 
 
