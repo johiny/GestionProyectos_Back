@@ -41,6 +41,7 @@ const tiposProyecto = gql`
     objetivos: [Objetivo]
     avances:[Avance]
     inscripciones:[Inscripcion]
+    
   }
 
   type Query {

@@ -11,7 +11,8 @@ const resolversUsuario = {
             populate: [{ path: 'lider' }],
           },
         },
-        { path: 'avancesCreados' },
+        {path:'proyectos'},
+        {path:'avancesCreados'},
         {
           path: 'proyectosLiderados',
         },
@@ -20,11 +21,27 @@ const resolversUsuario = {
     },
 
 
+    UsuarioII: async (parent, args) => {
+      const usuarioII = await UserModel.findOne({ _id: args._id }).populate([
+        {
+          path:'inscripciones',
+          populate:{
+            path:'proyecto',
+            populate:{
+              path:'lider',
+            }
+          },
+        },
+      ]);
+      return usuarioII
+    },
+
     Usuario: async (parent, args) => {
       const usuario = await UserModel.findOne({ _id: args._id }).populate({path:'proyectosLiderados'});
       return usuario;
     },
     
+
     UsuarioEst: async (parent, args) => {
       const usuarioEst = await UserModel.findOne({ _id: args._id }).populate({path:'avancesCreados'});
       return usuarioEst;
@@ -36,6 +53,7 @@ const resolversUsuario = {
     },
 
     
+  
 
   },
 

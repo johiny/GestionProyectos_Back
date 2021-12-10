@@ -11,6 +11,7 @@ const tiposUsuario = gql`
     estado: Enum_EstadoUsuario
     inscripciones: [Inscripcion]
     avancesCreados: [Avance]
+    proyectos:[Proyecto]
     proyectosLiderados: [Proyecto]
   }
 
@@ -19,6 +20,7 @@ const tiposUsuario = gql`
   type Query {
     Usuarios: [Usuario]
     Usuario(_id: String!): Usuario
+    UsuarioII(_id:String!):Usuario
     UsuarioEst(_id:String!):Usuario
     Estudiantes(rol:Enum_Rol):[Usuario]
   }
