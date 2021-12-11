@@ -38,7 +38,10 @@ const resolversUsuario = {
         {
           path:'proyectosLiderados',
           populate:{
-            path:'inscripciones'
+            path:'inscripciones',
+            populate:{
+              path:"estudiante"
+            }
           }
         }]);
       return usuario;
