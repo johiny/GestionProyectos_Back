@@ -34,7 +34,13 @@ const resolversUsuario = {
     },
 
     Usuario: async (parent, args) => {
-      const usuario = await UserModel.findOne({ _id: args._id }).populate({path:'proyectosLiderados'});
+      const usuario = await UserModel.findOne({ _id: args._id }).populate([
+        {
+          path:'proyectosLiderados',
+          populate:{
+            path:'inscripciones'
+          }
+        }]);
       return usuario;
     },
     
