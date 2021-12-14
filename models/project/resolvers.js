@@ -57,6 +57,7 @@ const resolversProyecto = {
         estado: args.estado,
         fase: args.fase,
         presupuesto: args.presupuesto,
+        objetivos: args.objetivos,
         
       },
       {new:true});
